@@ -1,0 +1,10 @@
+<div class="card" style="margin-top: 10px; margin-bottom: 10px;">
+    <div class="card-body">
+        <h4 class="card-title">{{ $ctrl.post.title }}</h4>
+        <p class="card-text">{{ $ctrl.post.content }}</p>
+        {{ $ctrl.post.score }}
+        <button class="btn btn-primary" ng-click="$ctrl.changeScore(1)">+1</button> <br/>
+        <span class="badge badge-pill badge-info" ng-repeat="tag in $ctrl.post.tags" style="margin-top: 5px; margin-right: 3px;">{{tag}}</span>
+    </div>
+
+</div>

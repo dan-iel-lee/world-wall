@@ -1,0 +1,4 @@
+
+<div ng-repeat="post in $ctrl.posts | orderBy:'+':$ctrl.reverse">
+    <post-item post="post" update-score="$ctrl.updateScore(newScore, post)"></post-item>
+</div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <script src="lib/angular/angular.js"></script>
+        <link rel="stylesheet"
+              type="text/css"
+              href="lib/bootstrap/dist/css/bootstrap.css" />
+        <script src="index.js"></script>
+        <script src="post/post.component.js"></script>
+        <script src="post_list/post_list.component.js"></script>
+        <script src="new_post/new_post.component.js"></script>
+        <style>
+            body {
+                background: rgb(102,255,188);
+                background: linear-gradient(155deg, rgba(102,255,188,1) 0%, rgba(20,251,255,1) 100%);
+            }
+        </style>
+    </head>
+    <body ng-controller="AppController">
+        <div class="container">
+            <div class="row justify-content-center" style="margin-top: 20px;">
+                <div class="col-6" style="min-width: 350px;">
+                    <!--<p ng-repeat="post in posts | orderBy:'-'">{{post.score}}</p>-->
+                    <button class="{{ addPostButtonClass }}" ng-click="showAddPost()">{{buttonText}}</button>
+                    <new-post ng-show="addPostVisible" tags="tags" create-post-bind="createPost(title, content, tags)"></new-post>
+                    <post-list posts="posts" reverse='true' update-post="updatePost(post, title, content, score)"></post-list>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "angulartribe",
+  "version": "1.0.0",
+  "description": "Angular write of Tribe",
+  "main": "app.js",
+  "scripts": {
+    "postinstall": "npm run copy-libs",
+    "copy-libs": "cpx \"node_modules/{angular,angular-*,bootstrap/dist}/**/*\" wwwroot/lib -C",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server ./app -a localhost -p 8000 -c-1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.7.8",
+    "bootstrap": "^4.3.1"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "http-server": "^0.11.1"
+  }
+}

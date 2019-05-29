@@ -1,0 +1,27 @@
+<form>
+    <div class="form-group">
+        <label for="post-title">Title</label>
+        <input class="form-control" type="text" id="post-title" ng-model="title" />
+    </div> 
+    <div class="form-group">
+        <label for="post-content">Content</label>
+        <textarea class="form-control" id="post-content" ng-model="content"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="post-tags">Tags</label>
+        <div class="row align-items-center" ng-repeat="addedTag in $ctrl.addedTags" style="padding: 10px">
+            <div class="col">{{addedTag}}</div>
+            <div class="col-sm-auto">
+                <button ng-click="$ctrl.removeTag(addedTag)" class="btn btn-danger" style="padding: 0px; padding-left: 5px; padding-right: 5px;">x</button>
+            </div>
+        </div>
+        <input enter-pressed="$ctrl.addTag($ctrl.tagInputStr)" class="form-control" type="text" id="post-tags" ng-model="$ctrl.tagInputStr"/>
+        <!-- Drop down for selecting tags -->
+        <div ng-show="$ctrl.tagInputStr" class="list-group">
+            <button ng-click="$ctrl.onTagClicked(tag)" class="list-group-item list-group-item-action" ng-repeat="tag in $ctrl.tags | filter:$ctrl.tagInputStr | limitTo:5">{{tag}}</button>
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" ng-click="$ctrl.createPost(title, content)">Submit</button>
+</form>
