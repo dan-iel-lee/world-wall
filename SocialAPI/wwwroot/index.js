@@ -75,18 +75,18 @@ app.factory("postService", ["$http", "$rootScope", function($http, $rootScope) {
 }]);
 
 app.factory("tagService", ["$http", "$rootScope", function ($http, $rootScope) {
-    let tags = ["sports", "politics", "memes", "movies", "tech", "trump", "america", "world"];
+    // let tags = ["sports", "politics", "memes", "movies", "tech", "trump", "america", "world"];
     function getTags() {
-        $http({
+        return $http({
             method: "GET",
             url: "api/tag",
         }).then(function successCallback(response) {
-            tags = response.data;
-            console.log(tags);
+            let tags = response.data;
+            // console.log(tags);
             $rootScope.$broadcast("tags:updated", tags);
-        })
 
-        return tags;
+            return tags;
+        })
     }
 
     return {
@@ -130,7 +130,9 @@ app.controller("AppController", ["postService", "tagService", "$scope", function
     $scope.updatePost = postService.updatePost;
 
     // tags stuff
-    $scope.tags = tagService.getTags();
+    tagService.getTags().then((tags) => {
+        $scope.tags = tags;
+    })
 
     // listen for tags updated
     $scope.$on("tags:updated", function (event, data) {
